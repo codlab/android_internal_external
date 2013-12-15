@@ -44,6 +44,11 @@
             android:key="customblock"
             android:summary="@string/customblocks"
             android:title="@string/customblock" />
+        <EditTextPreference
+            android:defaultValue="umask=0000"
+            android:key="customoptions"
+            android:summary="@string/customoptionss"
+            android:title="@string/customoptions" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="mounts"

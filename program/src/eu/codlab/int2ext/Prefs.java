@@ -36,15 +36,16 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 				JSONArray array = json_formatted.getJSONArray("c");
 				for(int i=0;i<array.length();i++){
 					JSONObject o = array.getJSONObject(i);
+                    String opt = o.optString("o","umask=0000");
 					if(o.has("t") && o.has("s") && o.has("k") && o.has("i") && o.has("e") && o.has("d")){
 						_roms.add(new RomConfig(o.getString("t"), o.getString("s"), o.getString("k"), o.getString("i"),
-								o.getString("e"), o.getString("d")));
+								o.getString("e"), o.getString("d"), opt));
 					}
 				}
 			}
 		} catch (Exception e) {
 			_roms.add(new RomConfig("Default SGS3 Roms", "This conf will work with many roms", "rom1", "/mnt/sdcard",
-					"/mnt/extSdCard", "/dev/block/vold/179:49"));
+					"/mnt/extSdCard", "/dev/block/vold/179:49","umask=0000"));
 		}
 	}
 	
@@ -170,6 +171,7 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 							mnt = new Preference(getActivity());
 							mnt.setTitle(split[0]);
 							final String dev = split[0];
+                            final String options = split.length>= 3 ? split[2] : "umask=0000";
 							for(int i=0;i<split.length-1 && !_trouve;i++){
 								if("type".equals(split[i])){
 									mnt.setSummary("FileSystem : "+split[i+1]);
@@ -187,6 +189,9 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 									getPreferenceManager().getSharedPreferences().edit().putString("customblock", dev).commit();
 									EditTextPreference device_preference = (EditTextPreference)_custom.findPreference("customblock");
 									device_preference.getEditText().setText(dev);
+
+                                    EditTextPreference options_preference = (EditTextPreference)_custom.findPreference("customoptions");
+                                    options_preference.getEditText().setText(options);
 									return false;
 								}
 							});
@@ -259,6 +264,7 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 				edit.putString("choosedinternal", find.getInternal());
 				edit.putString("choosedexternal", find.getExternal());
 				edit.putString("choosedblock", find.getDevice());
+                edit.putString("choosedoptions", find.getOptions());
 				edit.commit();
 				getActivity().runOnUiThread(new Runnable(){
 					@Override

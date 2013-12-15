@@ -27,6 +27,7 @@ public class CopyProgram {
 	private String _internal_mount_point;
 	private String _external_mount_point;
 	private String _device_block;
+    private String _options;
 
 	private Context _context;
 
@@ -46,10 +47,12 @@ public class CopyProgram {
 			_internal_mount_point=_sh.getString("custominternal", "/mnt/sdcard");
 			_external_mount_point=_sh.getString("customexternal", "/mnt/extSdCard");
 			_device_block=_sh.getString("customblock", "/dev/block/vold/179:49");
+            _options = _sh.getString("customoptions","umask=0000");
 		}else{
 			_internal_mount_point=_sh.getString("choosedinternal", "/mnt/sdcard");
 			_external_mount_point=_sh.getString("choosedexternal", "/mnt/extSdCard");
 			_device_block=_sh.getString("choosedblock", "/dev/block/vold/179:49");
+            _options = _sh.getString("choosedoptions","umask=0000");
 		}
 	}
 
@@ -173,7 +176,7 @@ public class CopyProgram {
 			cmd.su.runWaitFor("echo 'mount -o remount,rw /'>> /system/etc/init.d/11extsd2internalsd");
 			cmd.su.runWaitFor("echo 'mkdir -p /data/internal_sd'>> /system/etc/init.d/11extsd2internalsd");
 			cmd.su.runWaitFor("echo 'mount -o bind "+_internal_mount_point+" /data/internal_sd'>> /system/etc/init.d/11extsd2internalsd");
-			cmd.su.runWaitFor("echo 'mount -t "+getDeviceType(_device_block)+" -o umask=0000 "+_device_block+" "+_internal_mount_point+"'>> /system/etc/init.d/11extsd2internalsd");
+			cmd.su.runWaitFor("echo 'mount -t "+getDeviceType(_device_block)+" -o "+_options+" "+_device_block+" "+_internal_mount_point+"'>> /system/etc/init.d/11extsd2internalsd");
 			cmd.su.runWaitFor("echo 'mount -o bind /data/internal_sd "+_external_mount_point+"'>> /system/etc/init.d/11extsd2internalsd");
 			cmd.su.runWaitFor(getRemountRead(device));
 			return CopyProgram.APK_SYS_SUCCESS;
@@ -197,7 +200,7 @@ public class CopyProgram {
 		cmd.su.runWaitFor("echo 'mount -o remount,rw /'>> /system/etc/11extsd2internalsd");
 		cmd.su.runWaitFor("echo 'mkdir -p /data/internal_sd'>> /system/etc/11extsd2internalsd");
 		cmd.su.runWaitFor("echo 'mount -o bind "+_internal_mount_point+" /data/internal_sd'>> /system/etc/11extsd2internalsd");
-		cmd.su.runWaitFor("echo 'mount -t "+getDeviceType(_device_block)+" -o umask=0000 "+_device_block+" "+_internal_mount_point+"'>> /system/etc/11extsd2internalsd");
+		cmd.su.runWaitFor("echo 'mount -t "+getDeviceType(_device_block)+" -o "+_options+" "+_device_block+" "+_internal_mount_point+"'>> /system/etc/11extsd2internalsd");
 		cmd.su.runWaitFor("echo 'mount -o bind /data/internal_sd "+_external_mount_point+"'>> /system/etc/11extsd2internalsd");
 		return CopyProgram.APK_SYS_SUCCESS;
 	}
@@ -207,7 +210,6 @@ public class CopyProgram {
 		if(device != null){
 			if(cmd.su.runWaitFor(getRemountWrite(device)).success() != true)
 				return CopyProgram.APK_SYS_COULDNOTCREATE;
-			//CommandResult  r = cmd.su.runWaitFor("ls /data/app/eu.codlab.airplane*");
 			cmd.su.runWaitFor("rm /system/etc/init.d/11extsd2internalsd;"+getRemountRead(device));
 			return CopyProgram.APK_SYS_SUCCESS;
 		}else{
@@ -219,7 +221,6 @@ public class CopyProgram {
 		if(device != null){
 			if(cmd.su.runWaitFor(getRemountWrite(device)).success() != true)
 				return CopyProgram.APK_SYS_COULDNOTCREATE;
-			//CommandResult  r = cmd.su.runWaitFor("ls /data/app/eu.codlab.airplane*");
 			cmd.su.runWaitFor("rm /system/etc/11extsd2internalsd;"+getRemountRead(device));
 			return CopyProgram.APK_SYS_SUCCESS;
 		}else{
@@ -242,7 +243,7 @@ public class CopyProgram {
 			cmd.su.runWaitFor("mount -o rw,remount /");
 			cmd.su.runWaitFor("mkdir -p /data/internal_sd");
 			cmd.su.runWaitFor("mount -o bind "+_internal_mount_point+" /data/internal_sd");
-			cmd.su.runWaitFor("mount -t "+getDeviceType(_device_block)+" -o umask=0000 "+_device_block+" "+_internal_mount_point+"");
+			cmd.su.runWaitFor("mount -t "+getDeviceType(_device_block)+" -o "+_options+" "+_device_block+" "+_internal_mount_point+"");
 			cmd.su.runWaitFor("mount -o bind /data/internal_sd "+_external_mount_point+"");
 			cmd.su.runWaitFor(getRemountRead(device));
 			checkMediaRescan();

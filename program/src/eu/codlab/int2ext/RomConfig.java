@@ -7,6 +7,7 @@ public class RomConfig {
 	private String _internal;
 	private String _external;
 	private String _device;
+    private String _options;
 	
 	/**
 	 * 
@@ -18,13 +19,14 @@ public class RomConfig {
 	 * @param device
 	 */
 	public RomConfig(String name, String summary, String id, String internal,
-			String external, String device){
+			String external, String device, String options){
 		_id = id;
 		_name = name;
 		_summary = summary;
 		_internal = internal;
 		_external = external;
 		_device = device;
+        _options = options;
 	}
 	
 	public String getId(){
@@ -46,4 +48,7 @@ public class RomConfig {
 	public String getDevice(){
 		return _device;
 	}
+    public String getOptions(){
+        return _options;
+    }
 }

@@ -45,7 +45,7 @@ public class ChoiceFragment extends Fragment{
 	public void onViewCreated(View view, Bundle saveInstanceState){
 
 		// External 2 Internal
-		Button b = (Button)view.findViewById(R.int2ext.go);
+		Button b = (Button)view.findViewById(R.id.int2ext_go);
 		b.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -57,7 +57,7 @@ public class ChoiceFragment extends Fragment{
 		});
 
 		//External 2 Internal from init.d
-		b = (Button)view.findViewById(R.int2ext.goinit);
+		/*b = (Button)view.findViewById(R.id.int2ext_goinit);
 		b.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -66,10 +66,10 @@ public class ChoiceFragment extends Fragment{
 				c.copyProgram();
 			}
 
-		});
+		});*/
 
 		//External 2 Internal per BOOT COMPLETED RECEIVER
-		CheckBox c = (CheckBox)view.findViewById(R.int2ext.goboot);
+		CheckBox c = (CheckBox)view.findViewById(R.id.int2ext_goboot);
 		c.setChecked(CopyProgram.existsProgramBootReceiver());
 		c.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 

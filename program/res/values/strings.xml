@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="help">Switch the internal and the external sdcard on your device (Download the up to date configuration lists from the settings page or edit the custom configuration). Use at your own risk (even if...) You obviously need a Galaxy S3 for the default one but you can check to update the settings and you can fetch the devices on your phone and select the one you want to mount! You can this way customize the remount!!. Do not test with any other smartphones (it will spread rainbow pony all over the world).</string>
+    <string name="help">Switch the internal and the external sdcard on your device. Use at your own risk (even if...) You can use the app with almost every devices. Carefully locate the external and internal folder and your external sdcard device and update the settings (it will spread rainbow pony all over the world).</string>
     <string name="app_name">Android sdcard external 2 internal</string>
     <string name="app_name_short">External 2 internal</string>
     <string name="go">External > Internal*</string>
@@ -12,7 +12,7 @@
     <string name="gotemp">* it will stay until you reboot the phone</string>
     <string name="gosboot">** At boot, the application will execute the copy, no init.d support required!\n</string>
     <string name="credits">Application by codlab ( @codlab or http://twitter.com/codlab).\n
-        Source code available on code.google : http://http://code.google.com/p/android-internal-external/\n
+        Source code available on github : http://github.com/codlab/android_internal_external /\n
         Check my application on the market : https://play.google.com/store/apps/developer?id=codlab\n
 	    Original script by mattiadj from xda.\n
 	    Original thread :http://forum.xda-developers.com/showthread.php?t=1772234</string>
@@ -26,6 +26,8 @@
     <string name="customblocks">The access to the original ext. block</string>
     <string name="customdefault">Use per default</string>
     <string name="customdefaults">Check to use custom attributes</string>
+    <string name="customoptions">Mount options</string>
+    <string name="customoptionss">mount -o option for the device</string>
     <string name="warning">Warning !</string>
     <string name="firsttime">It seems you did not choose a configuretion. Press ok to open the settings</string>
     <string name="ok">Go</string>
@@ -46,5 +48,14 @@
     <string name="prefclicktomountexplain">Click here to see all the different devices and fs</string>
     <string name="cantuncheck">You can\'t uncheck a rom configuration!</string>
     <string name="warningchanged">Warning : you changed the settings, you have to refresh the External > Internal, boot etc...</string>
+
+    <string name="make_donation">Donation</string>
+    <string name="dialog_donation_title">Playstore Donation</string>
+    <string name="dialog_donation_message">You can contribute to this app by making a simple play-store in app donation</string>
+    <string name="dialog_donation_no_thx">No Thx</string>
+    <string name="dialog_donation_mini">2$</string>
+    <string name="dialog_donation_max">5$</string>
+    <string name="purchased_don1">Thanks for having purchased a donation</string>
+    <string name="purchased_don2">Thanks for having purchased a donation</string>
 
 </resources>

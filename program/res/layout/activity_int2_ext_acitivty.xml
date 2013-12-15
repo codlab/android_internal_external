@@ -3,5 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:id="@+int2ext/fragment"
+    android:id="@+id/int2ext_fragment"
     android:orientation="vertical" ></FrameLayout>
