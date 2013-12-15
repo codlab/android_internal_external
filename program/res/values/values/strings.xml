@@ -1,0 +1,49 @@
+<resources>
+
+    <string name="help">Switch the internal and the external sdcard on your device (Download the up to date configuration lists from the settings page or edit the custom configuration). Use at your own risk (even if...) You obviously need a Galaxy S3 for the default one but you can check to update the settings and you can fetch the devices on your phone and select the one you want to mount! You can this way customize the remount!!. Do not test with any other smartphones (it will spread rainbow pony all over the world).</string>
+    <string name="app_name">Android sdcard external 2 internal</string>
+    <string name="app_name_short">External 2 internal</string>
+    <string name="go">External > Internal*</string>
+    <string name="goboot">At boot **</string>
+    <string name="goinit">At boot if init.d enable!</string>
+    <string name="back">Delete mod</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_int2_ext_acitivty">Manage Mode</string>
+    <string name="gotemp">* it will stay until you reboot the phone</string>
+    <string name="gosboot">** At boot, the application will execute the copy, no init.d support required!\n</string>
+    <string name="credits">Application by codlab ( @codlab or http://twitter.com/codlab).\n
+        Source code available on code.google : http://http://code.google.com/p/android-internal-external/\n
+        Check my application on the market : https://play.google.com/store/apps/developer?id=codlab\n
+	    Original script by mattiadj from xda.\n
+	    Original thread :http://forum.xda-developers.com/showthread.php?t=1772234</string>
+    <string name="choosemode">Choose the configuration</string>
+    <string name="custommode">Set custom infos</string>
+    <string name="custominternal">The original internal mounting point</string>
+    <string name="custominternals">ex: sgs3 /mnt/sdcard</string>
+    <string name="customexternal">The original external mounting point</string>
+    <string name="customexternals">ex: sgs3 /mnt/extSdcard</string>
+    <string name="customblock">The ext. sdcard device access</string>
+    <string name="customblocks">The access to the original ext. block</string>
+    <string name="customdefault">Use per default</string>
+    <string name="customdefaults">Check to use custom attributes</string>
+    <string name="warning">Warning !</string>
+    <string name="firsttime">It seems you did not choose a configuretion. Press ok to open the settings</string>
+    
+    <string name="ok">Go</string>
+    <string name="cancel">I don\'t care</string>
+    
+    <string name="downloadstart">The download started ...</string>
+    <string name="downloaderror">Error while downloading the update!</string>
+    <string name="downloadok">The file has been download to /data/codlab_int2ext</string>
+    
+    <string name="errormount">The mount result was incorrect. Error with su?</string>
+    <string name="sendmailtitle">Send the list per mail</string>
+    <string name="sendmailsummary">The list will be send to codlab/pokeke100@gmail.com</string>
+    <string name="sendmailtitlebuild">Send the list per mail+build.prop</string>
+    <string name="sendmailbuildsummary">the build.prop will be used to target the conf</string>
+    <string name="viewmounts">View the devices and fs</string>
+    <string name="prefclicktomount">View the different devices</string>
+    <string name="prefclicktomountexplain">Click here to see all the different devices and fs</string>
+    <string name="cantuncheck">You can\'t uncheck a rom configuration!</string>
+    <string name="warningchanged">Warning : you changed the settings, you have to refresh the External > Internal, boot etc...</string>
+</resources>

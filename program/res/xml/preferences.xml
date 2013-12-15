@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="rom"
+        android:title="@string/choosemode" >
+    </PreferenceCategory>
+    <!--
+    <PreferenceCategory
+        android:key="favorites"
+        android:title="Batiments" >
+    </PreferenceCategory>
+    -->
+    <PreferenceCategory
+        android:key="optionnal"
+        android:title="@string/optionnal" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="sendrescan"
+            android:summary="@string/sendrescansummary"
+            android:title="@string/sendrescantitle" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="custompreferences"
+        android:title="@string/custommode" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="customdefault"
+            android:summary="@string/customdefaults"
+            android:title="@string/customdefault" />
+
+        <EditTextPreference
+            android:defaultValue="/mnt/sdcard"
+            android:key="custominternal"
+            android:summary="@string/custominternals"
+            android:title="@string/custominternal" />
+        <EditTextPreference
+            android:defaultValue="/mnt/extSdCard"
+            android:key="customexternal"
+            android:summary="@string/customexternals"
+            android:title="@string/customexternal" />
+        <EditTextPreference
+            android:defaultValue="/dev/block/vold/179:49"
+            android:key="customblock"
+            android:summary="@string/customblocks"
+            android:title="@string/customblock" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="mounts"
+        android:title="@string/viewmounts" />
+
+</PreferenceScreen>
