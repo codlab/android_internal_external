@@ -7,7 +7,7 @@
     <string name="goboot">At boot **</string>
     <string name="goinit">At boot if init.d enable!</string>
     <string name="back">Delete mod</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_settingss">Settings</string>
     <string name="title_activity_int2_ext_acitivty">Manage Mode</string>
     <string name="gotemp">* it will stay until you reboot the phone</string>
     <string name="gosboot">** At boot, the application will execute the copy, no init.d support required!\n</string>
@@ -17,6 +17,17 @@
 	    Original script by mattiadj from xda.\n
 	    Original thread :http://forum.xda-developers.com/showthread.php?t=1772234</string>
     <string name="choosemode">Choose the configuration</string>
+
+    <string name="infomode">Information</string>
+    <string name="infodonationplaystore">Make a donation via the Google Play inapp purchase</string>
+    <string name="infodonationplaystores">Open the invite to make a donation</string>
+    <string name="infodonationpaypal">Make a donation via Paypal</string>
+    <string name="infodonationpaypals">Redirects you to the paypal website</string>
+    <string name="contact">Contact me</string>
+    <string name="contacts">You can contact me at codlabtech@gmail.com</string>
+    <string name="website">Website</string>
+    <string name="websites">Available here > http://codlab.eu</string>
+
     <string name="custommode">Set custom infos</string>
     <string name="custominternal">The original internal mounting point</string>
     <string name="custominternals">ex: sgs3 /mnt/sdcard</string>
@@ -40,7 +51,7 @@
     <string name="sendrescantitle">Send rescan</string>
     <string name="errormount">The mount result was incorrect. Error with su?</string>
     <string name="sendmailtitle">Send the list per mail</string>
-    <string name="sendmailsummary">The list will be send to codlab/pokeke100@gmail.com</string>
+    <string name="sendmailsummary">The list will be send to codlab / codlabtech@gmail.com</string>
     <string name="sendmailtitlebuild">Send the list per mail+build.prop</string>
     <string name="sendmailbuildsummary">the build.prop will be used to target the conf</string>
     <string name="viewmounts">View the devices and fs</string>
@@ -57,5 +68,30 @@
     <string name="dialog_donation_max">5$</string>
     <string name="purchased_don1">Thanks for having purchased a donation</string>
     <string name="purchased_don2">Thanks for having purchased a donation</string>
+
+    <string name="swap_ok">Swap done</string>
+    <string name="swap_ko">Something went wrong</string>
+
+    <string name="help2">0/ -- This little text will help find your different data. Note that on some system you will need more tricky ones but they are rare ;)\n\n
+    1/ -- First of all, you will need to format your sdcard to exfat (for instance), ext4 is also good - avoid fat32 cause on new Android versions, due to security enhanced, rights on folder/file are checked and... its better ;)\n\n
+    2/ -- Then when you are good with this step. Go to the settings. Use the last option "VIEW THE DIFFERENT DEVICES" to display your list of points mounted.\n\n
+    3/ -- You need to find the internal and the external folder which are currently used!\n
+    The internal folder should be in a line where you see in the information something like "folder : /mnt/shell/emulated" or /mnt/shell/emulated/legacy, etc... To be sure when you find it, use a file explorer and go to this folder, if you see your internal sdcard folders, you are good to go! if not, if you see few subfolders only, navigate through them to locate the right place ;) Done?\n
+    Now simply set it in the option "THE ORIGINAL INTERNAL MOUNTING POINT"\n\
+    4/ -- Ok then, for the external folder, it is.... EXACTLY the same. And to make it easier? If you formatted your sdcard to exfat... you will see a exfat in the (fs : xxx )\n\n
+    5/ -- The tricky part? The external sdcard device used by the system as the point to mount! But hey, you located your folder earlier? Click on the option to set automatically the info in the textbox.
+    Simply check it is there by editing it, do the same with the options, often umask=0000 is quite enough - if not, you can often erase everything before the allow time parameter in the textbox of the mount option.\n\n
+    6/ -- Everything is okay? Check the "USE PER DEFAULT" to tell the system to use custom information\n Go to the main screen and try to swap the two folders. To check it? Go the system settings > storage. If you have trouble, note that you can reboot the device, change the settings and retry.\n\n
+    7/ -- Note : you can check the "AT BOOT" checkbox only when you are sure you have the right options and you tested them!\n\n
+    8/ -- Information
+    Questions? You can contact me at codlabtech@gmail.com or cellphone (france!) +33675683928\n\n
+    Want to contribute? Please make your donation via the play store in app purchase or directly through paypal.\n\n
+    Want the source code? The source code is still quite in mess but available in my github repository : http://github.com/codlab\n
+
+    </string>
+
+    <string name="main_title">Main</string>
+    <string name="help_title">Help</string>
+    <string name="settings_title">Settings</string>
 
 </resources>

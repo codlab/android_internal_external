@@ -1,9 +1,9 @@
 package eu.codlab.int2ext;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,13 +14,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Toast;
 
 /**
  * This fragment is the first one which can be seen
  * @author kevin le perf
  *
  */
-public class ChoiceFragment extends Fragment{
+public class ChoiceFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle s){
 		super.onCreate(s);
@@ -51,7 +52,11 @@ public class ChoiceFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				CopyProgram c = new CopyProgram(getActivity());
-				c.copyProgramSoft();
+				if(CopyProgram.APK_SYS_SUCCESS == c.copyProgramSoft()){
+                    Toast.makeText(getActivity(), R.string.swap_ok, Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getActivity(), R.string.swap_ko, Toast.LENGTH_LONG).show();
+                }
 			}
 
 		});
@@ -90,6 +95,6 @@ public class ChoiceFragment extends Fragment{
 	//create the menu
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.activity_int2_ext_activity, menu);
+		inflater.inflate(R.menu.activity_main, menu);
 	}
 }

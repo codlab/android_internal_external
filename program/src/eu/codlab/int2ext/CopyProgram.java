@@ -43,7 +43,7 @@ public class CopyProgram {
 		if(cmd == null)
 			cmd = new ShellCommand();
 		SharedPreferences _sh = context.getSharedPreferences(PREFERENCES, 0);
-		if(_sh.getBoolean("customdefault", false)){
+		if(_sh.getBoolean("customdefault", true)){
 			_internal_mount_point=_sh.getString("custominternal", "/mnt/sdcard");
 			_external_mount_point=_sh.getString("customexternal", "/mnt/extSdCard");
 			_device_block=_sh.getString("customblock", "/dev/block/vold/179:49");
@@ -240,12 +240,18 @@ public class CopyProgram {
 	public int copyProgramSoft(){
 		String device = executeSuMount();
 		if(device != null){
-			cmd.su.runWaitFor("mount -o rw,remount /");
-			cmd.su.runWaitFor("mkdir -p /data/internal_sd");
-			cmd.su.runWaitFor("mount -o bind "+_internal_mount_point+" /data/internal_sd");
-			cmd.su.runWaitFor("mount -t "+getDeviceType(_device_block)+" -o "+_options+" "+_device_block+" "+_internal_mount_point+"");
-			cmd.su.runWaitFor("mount -o bind /data/internal_sd "+_external_mount_point+"");
-			cmd.su.runWaitFor(getRemountRead(device));
+			CommandResult r = cmd.su.runWaitFor("mount -o rw,remount /");
+            Log.d("result",r.toString());
+            r=cmd.su.runWaitFor("mkdir -p /data/internal_sd");
+            Log.d("result",r.toString());
+            r=cmd.su.runWaitFor("mount -o bind "+_internal_mount_point+" /data/internal_sd");
+            Log.d("result",r.toString());
+            r=cmd.su.runWaitFor("mount -t "+getDeviceType(_device_block)+" -o "+_options+" "+_device_block+" "+_internal_mount_point+"");
+            Log.d("result",r.toString());
+            r=cmd.su.runWaitFor("mount -o bind /data/internal_sd "+_external_mount_point+"");
+            Log.d("result",r.toString());
+			r=cmd.su.runWaitFor(getRemountRead(device));
+            Log.d("result",r.toString());
 			checkMediaRescan();
 			return CopyProgram.APK_SYS_SUCCESS;
 		}else{

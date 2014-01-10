@@ -10,13 +10,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
+import android.support.v4.preference.PreferenceFragment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -51,6 +53,8 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 	
 	private void populateConfList(){
 		PreferenceCategory targetCategory = (PreferenceCategory)findPreference("rom");
+        if(targetCategory == null)return;
+
 		targetCategory.removeAll();
 		CheckBoxPreference _check = null;
 
@@ -82,7 +86,41 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 
 		populateConfList();
 
-	}
+        Preference website = findPreference("website");
+        website.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Uri uri = Uri.parse("http://www.codlab.eu/");
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
+                return true;
+            }
+        });
+        Preference playstore = findPreference("playstore");
+        playstore.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try{
+                    if(getActivity() != null && getActivity() instanceof Int2ExtActivity){
+                        ((Int2ExtActivity)getActivity()).createDonationDialog(false, false);
+                    }
+                }catch(Exception e){
+                }
+
+                return true;
+            }
+        });
+        Preference paypal = findPreference("paypal");
+        paypal.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Uri uri = Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2EPFUE8UY99F4");
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
+                return true;
+            }
+        });
+
+
+    }
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -135,7 +173,7 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 					mnt.setOnPreferenceClickListener(new OnPreferenceClickListener(){
 						@Override
 						public boolean onPreferenceClick(Preference preference) {
-							String emailList[] = {"pokeke100@gmail.com"};
+							String emailList[] = {"codlabtech@gmail.com"};
 							Intent intent = new Intent(Intent.ACTION_SEND);  
 							intent.setType("plain/text");
 							intent.putExtra(Intent.EXTRA_EMAIL, emailList);   
@@ -153,7 +191,7 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 					mnt.setOnPreferenceClickListener(new OnPreferenceClickListener(){
 						@Override
 						public boolean onPreferenceClick(Preference preference) {
-							String emailList[] = {"pokeke100@gmail.com"};
+							String emailList[] = {"codlabtech@gmail.com"};
 							Intent intent = new Intent(Intent.ACTION_SEND);  
 							intent.setType("plain/text");
 							intent.putExtra(Intent.EXTRA_EMAIL, emailList);   
@@ -167,19 +205,20 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 					for(String line : lines){
 						String [] split = line.split(" ");
 						if(split.length > 1){
+                            Log.d("line", line);
 							_trouve=false;
 							mnt = new Preference(getActivity());
 							mnt.setTitle(split[0]);
 							final String dev = split[0];
-                            final String options = split.length>= 3 ? split[2] : "umask=0000";
+                            final String options = split.length>= 4 ? split[3] : "umask=0000";
 							for(int i=0;i<split.length-1 && !_trouve;i++){
 								if("type".equals(split[i])){
-									mnt.setSummary("FileSystem : "+split[i+1]);
+									mnt.setSummary("folder : "+split[1]+"  (fs : "+split[i+1]);
 									_trouve = true;
 								}
 							}
 							if(!_trouve && split.length>2){
-								mnt.setSummary("fs : "+split[2]+" (result from mount)");
+								mnt.setSummary("folder : "+split[1]+"  (fs : "+split[2]+" - result from mount)");
 							}else if(!_trouve){
 								mnt.setSummary("FS Error avoid this one");
 							}
@@ -190,6 +229,7 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 									EditTextPreference device_preference = (EditTextPreference)_custom.findPreference("customblock");
 									device_preference.getEditText().setText(dev);
 
+                                    getPreferenceManager().getSharedPreferences().edit().putString("customoptions", options).commit();
                                     EditTextPreference options_preference = (EditTextPreference)_custom.findPreference("customoptions");
                                     options_preference.getEditText().setText(options);
 									return false;
@@ -243,14 +283,15 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 
 
 			PreferenceCategory targetCategory = (PreferenceCategory)findPreference("rom");
-			CheckBoxPreference _romconf;
-			for(int i=0;i<targetCategory.getPreferenceCount();i++){
-				if(targetCategory.getPreference(i) instanceof CheckBoxPreference){
-					_romconf = (CheckBoxPreference) targetCategory.getPreference(i);
-					_romconf.setChecked(arg1.equals(_roms.get(i).getId()));
-
-				}
-			}
+            if(targetCategory != null){
+			    CheckBoxPreference _romconf;
+			    for(int i=0;i<targetCategory.getPreferenceCount();i++){
+			    	if(targetCategory.getPreference(i) instanceof CheckBoxPreference){
+		    			_romconf = (CheckBoxPreference) targetCategory.getPreference(i);
+	    				_romconf.setChecked(arg1.equals(_roms.get(i).getId()));
+	    			}
+    			}
+            }
 
 			if(getPreferenceManager().getSharedPreferences().getBoolean(arg1, true) != false){
 
@@ -331,18 +372,19 @@ public class Prefs extends PreferenceFragment implements OnSharedPreferenceChang
 	}
 
 	public void jsonDownloadFailure(){
-		getActivity().runOnUiThread(new Runnable(){
-			@Override
-			public void run(){
-				Toast.makeText(getActivity(), R.string.downloaderror, Toast.LENGTH_SHORT).show();
-			}
-		});
+        if(getActivity() != null)
+    		getActivity().runOnUiThread(new Runnable(){
+    			@Override
+	    		public void run(){
+	    			Toast.makeText(getActivity(), R.string.downloaderror, Toast.LENGTH_SHORT).show();
+		    	}
+		    });
 	}
 
 	public void jsonDownloadOk(){
 		populateList();
-		
-		getActivity().runOnUiThread(new Runnable(){
+        if(getActivity() != null)
+            getActivity().runOnUiThread(new Runnable(){
 			@Override
 			public void run(){
 				populateConfList();

@@ -1,0 +1,69 @@
+<resources>
+
+    <string name="help">Switch the internal and the external sdcard on your device. Use at your own risk (even if...) You can use the app with almost every devices. Carefully locate the external and internal folder and your external sdcard device and update the settings (it will spread rainbow pony all over the world).</string>
+    <string name="app_name">Android sdcard external 2 internal</string>
+    <string name="app_name_short">External 2 internal</string>
+    <string name="go">External > Internal*</string>
+    <string name="goboot">Au démarrage **</string>
+    <string name="goinit">At boot if init.d enable!</string>
+    <string name="back">Effacer mod</string>
+    <string name="menu_settingss">Paramètres</string>
+    <string name="title_activity_int2_ext_acitivty">Manage Mode</string>
+    <string name="gotemp">* it will stay until you reboot the phone</string>
+    <string name="gosboot">** At boot, the application will execute the copy, no init.d support required!\n</string>
+    <string name="credits">Application by codlab ( @codlab or http://twitter.com/codlab).\n
+        Source code available on github : http://github.com/codlab/android_internal_external /\n
+        Check my application on the market : https://play.google.com/store/apps/developer?id=codlab\n
+	    Original script by mattiadj from xda.\n
+	    Original thread :http://forum.xda-developers.com/showthread.php?t=1772234</string>
+    <string name="choosemode">Choose the configuration</string>
+    <string name="custommode">Set custom infos</string>
+    <string name="custominternal">The original internal mounting point</string>
+    <string name="custominternals">ex: sur un sgs3 /mnt/sdcard</string>
+    <string name="customexternal">The original external mounting point</string>
+    <string name="customexternals">ex: sur un sgs3 /mnt/extSdcard</string>
+    <string name="customblock">Le device de la carte sd externe</string>
+    <string name="customblocks">The access to the original ext. block</string>
+    <string name="customdefault">Utiliser par défaut</string>
+    <string name="customdefaults">Check to use custom attributes</string>
+    <string name="customoptions">Options de montage</string>
+    <string name="customoptionss">mount -o option for the device (often umask=0000 is enough, set to it if problems)</string>
+    <string name="warning">Attention !</string>
+    <string name="firsttime">It seems you did not choose a configuretion. Press ok to open the settings</string>
+    <string name="ok">Go</string>
+    <string name="cancel">Pas besoin</string>
+    <string name="downloadstart">Le téléchargement démarre ...</string>
+    <string name="downloaderror">Error while downloading the update!</string>
+    <string name="downloadok">Le fichier a été sauvegardé dans data/codlab_int2ext</string>
+    <string name="optionnal">Options</string>
+    <string name="sendrescansummary">Sent when the swap is done</string>
+    <string name="sendrescantitle">Envoyer un rescan</string>
+    <string name="errormount">The mount result was incorrect. Error with su?</string>
+    <string name="sendmailtitle">Send the list per mail</string>
+    <string name="sendmailsummary">The list will be send to codlab/codlabtech@gmail.com</string>
+    <string name="sendmailtitlebuild">Send the list per mail+build.prop</string>
+    <string name="sendmailbuildsummary">the build.prop will be used to target the conf</string>
+    <string name="viewmounts">View the devices and fs</string>
+    <string name="prefclicktomount">View the different devices</string>
+    <string name="prefclicktomountexplain">Click here to see all the different devices and fs</string>
+    <string name="cantuncheck">You can\'t uncheck a rom configuration!</string>
+    <string name="warningchanged">Warning : you changed the settings, you have to refresh the External > Internal, boot etc...</string>
+
+    <string name="make_donation">Don</string>
+    <string name="dialog_donation_title">Don Google Play</string>
+    <string name="dialog_donation_message">You can contribute to this app by making a simple play-store in app donation</string>
+    <string name="dialog_donation_no_thx">Non Merci</string>
+    <string name="dialog_donation_mini">2$</string>
+    <string name="dialog_donation_max">5$</string>
+    <string name="purchased_don1">Merci d\'avoir effectué un don</string>
+    <string name="purchased_don2">Merci d\'avoir effectué un don</string>
+
+    <string name="swap_ok">Swap effectué</string>
+    <string name="swap_ko">Quelque chose n\'a pas fonctionné</string>
+
+
+    <string name="main_title">Accueil</string>
+    <string name="help_title">Aide</string>
+    <string name="settings_title">Paramètres</string>
+
+</resources>

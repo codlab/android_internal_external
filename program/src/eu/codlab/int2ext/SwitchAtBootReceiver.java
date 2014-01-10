@@ -21,7 +21,7 @@ public class SwitchAtBootReceiver extends BroadcastReceiver {
             CopyProgram c = new CopyProgram(_context);
             Log.d("SwitchAtBootReceiver","finish");
             try{
-                Thread.sleep(5000);
+                Thread.sleep(500);
             }catch(Exception e){
 
             }

@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="rom"
         android:title="@string/choosemode" >
-    </PreferenceCategory>
-    <!--
+    </PreferenceCategory>-->
+
     <PreferenceCategory
-        android:key="favorites"
-        android:title="Batiments" >
+        android:key="infos"
+        android:title="@string/infomode" >
+        <Preference
+            android:key="playstore"
+            android:title="@string/infodonationplaystore"
+            android:summary="@string/infodonationplaystores" />
+        <Preference
+            android:key="paypal"
+            android:title="@string/infodonationpaypal"
+            android:summary="@string/infodonationpaypals"/>
+        <Preference
+            android:key="contact"
+            android:title="@string/contact"
+            android:summary="@string/contacts" />
+        <Preference
+            android:key="website"
+            android:title="@string/website"
+            android:summary="@string/websites" />
     </PreferenceCategory>
-    -->
     <PreferenceCategory
         android:key="optionnal"
         android:title="@string/optionnal" >
@@ -24,7 +39,7 @@
         android:key="custompreferences"
         android:title="@string/custommode" >
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="customdefault"
             android:summary="@string/customdefaults"
             android:title="@string/customdefault" />

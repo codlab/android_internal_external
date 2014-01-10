@@ -42,20 +42,26 @@ public class ShellCommand {
         public final String stdout;
         public final String stderr;
         public final Integer exit_value;
+        public final String cmd;
         
-        CommandResult(Integer exit_value_in, String stdout_in, String stderr_in)
+        CommandResult(Integer exit_value_in, String c, String stdout_in, String stderr_in)
         {
+            cmd = c;
             exit_value = exit_value_in;
             stdout = stdout_in;
             stderr = stderr_in;
         }
         
-        CommandResult(Integer exit_value_in) {
-            this(exit_value_in, null, null);
+        CommandResult(Integer exit_value_in,String c) {
+            this(exit_value_in, c, null, null);
         }
         
         public boolean success() {
             return exit_value != null && exit_value == 0;
+        }
+
+        public String toString(){
+            return cmd+" "+stdout+" "+stderr+" "+exit_value;
         }
     }
 
@@ -114,7 +120,7 @@ public class ShellCommand {
                 } catch(NullPointerException e) {
                 }
             }
-            return new CommandResult(exit_value, stdout, stderr);
+            return new CommandResult(exit_value, s, stdout, stderr);
         }
     }
 }

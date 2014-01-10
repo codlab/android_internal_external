@@ -15,11 +15,33 @@
 	</parent>
 
 	<dependencies>
+        <dependency>
+            <groupId>eu.codlab.int2ext</groupId>
+            <artifactId>viewpager-library</artifactId>
+            <version>${project.version}</version>
+            <type>apklib</type>
+        </dependency>
+
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>eu.codlab.int2ext</groupId>
+            <artifactId>android-support-fragment</artifactId>
+            <version>${project.version}</version>
+            <type>apklib</type>
+        </dependency>
+
+        <dependency>
+            <groupId>android-support-v13</groupId>
+            <artifactId>jar</artifactId>
+            <version>${project.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/android-support-v13.jar</systemPath>
+        </dependency>
 	</dependencies>
 
     <build>
