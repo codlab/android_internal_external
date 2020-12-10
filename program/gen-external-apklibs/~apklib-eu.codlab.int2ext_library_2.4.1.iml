@@ -19,9 +19,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/eu.codlab.int2ext_library_2.4.1">
-      <sourceFolder url="file://$MODULE_DIR$/eu.codlab.int2ext_library_2.4.1/gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eu.codlab.int2ext_library_2.4.1/gen" isTestSource="true" />
     </content>
-    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="sourceFolder" forTests="true" />
   </component>
 </module>
 
